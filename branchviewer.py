@@ -26,7 +26,8 @@ class MyFrame(wx.Frame):
         self.deleteBtn = wx.Button(panel, -1, "Delete")
         sizer.Add(self.refreshBtn, pos=(2, 0), span=(1,1), flag=wx.ALL|wx.EXPAND, border=5)
         sizer.Add(self.deleteBtn, pos=(2, 3), span=(1,1), flag=wx.ALL|wx.EXPAND, border=5)
-
+        self.deleteBtn.Bind(wx.EVT_BUTTON, self.OnDelete)
+        self.refreshBtn.Bind(wx.EVT_BUTTON, self.OnRefresh)
         for i in range(3):
             sizer.AddGrowableCol(i)
             sizer.AddGrowableRow(i)
@@ -38,6 +39,12 @@ class MyFrame(wx.Frame):
         self.SetClientSize(panel.GetBestSize())
         panel.Layout()
         self.Show(True)
+
+    def OnDelete(self, event):
+        print event
+
+    def OnRefresh(self, event):
+        print event
 
     def add_tags(self,tags):
         for tag in tags:
