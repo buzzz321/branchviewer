@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import wx
 import subprocess
 import string
@@ -7,15 +10,15 @@ REPO = '.git'
 class MyFrame(wx.Frame):
     """ We simply derive a new class of Frame. """
     def __init__(self, parent, title):
-        wx.Frame.__init__(self, parent, title=title, size=(200,200))
-        panel = wx.Panel(self, -1, style=wx.SUNKEN_BORDER)
+        super(MyFrame, self).__init__(parent, title=title, size=(400,800)) #wx.Frame self,
+        panel = wx.Panel(self)
         
         sizer = wx.GridBagSizer()
-        
-        self.list_ctrl = wx.ListCtrl(panel, size=(-11,100),
+       
+        self.list_ctrl = wx.ListCtrl(panel, -1, size=(-11,100),
                          style=wx.LC_REPORT
-                         |wx.BORDER_SUNKEN
-                         |wx.EXPAND
+                         |wx.BORDER_SUNKEN                         
+                         |wx.LB_MULTIPLE
                          )
         
         self.list_ctrl.InsertColumn(0, 'Branch tag')
@@ -35,20 +38,33 @@ class MyFrame(wx.Frame):
         box = wx.BoxSizer(wx.VERTICAL)
         box.Add(sizer, 1, flag=wx.ALL|wx.EXPAND)
         
-        panel.SetSizer(box)
-        self.SetClientSize(panel.GetBestSize())
+        panel.SetSizer(box)        
         panel.Layout()
+        #self.Center()        
         self.Show(True)
 
     def OnDelete(self, event):
-        print event
+        
+        item = -1
+        
+        while True:
+            item = self.list_ctrl.GetNextItem(item,
+                                wx.LIST_NEXT_ALL,
+                                wx.LIST_STATE_SELECTED)
+            if item == -1:
+                break
+
+            print("Item %ld is selected"%item)
+        #print event
 
     def OnRefresh(self, event):
         print event
 
     def add_tags(self,tags):
         for tag in tags:
-            self.list_ctrl.Append([tag,''])
+            #self.list_ctrl.Append([tag,''])
+            self.list_ctrl.InsertStringItem(self.list_ctrl.GetItemCount(), tag)
+        self.list_ctrl.SetColumnWidth(0, wx.LIST_AUTOSIZE)
         
 def get_tags():
      cmd = "git"
