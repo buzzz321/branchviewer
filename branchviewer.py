@@ -12,15 +12,15 @@ class MyFrame(wx.Frame):
     def __init__(self, parent, title):
         super(MyFrame, self).__init__(parent, title=title, size=(400,800)) #wx.Frame self,
         panel = wx.Panel(self)
-        
+
         sizer = wx.GridBagSizer()
-       
+
         self.list_ctrl = wx.ListCtrl(panel, -1, size=(-11,100),
                          style=wx.LC_REPORT
-                         |wx.BORDER_SUNKEN                         
+                         |wx.BORDER_SUNKEN
                          |wx.LB_MULTIPLE
                          )
-        
+
         self.list_ctrl.InsertColumn(0, 'Branch tag')
         self.list_ctrl.InsertColumn(1, 'Top msg')
         sizer.Add(self.list_ctrl, pos=(0, 0), span=(2, 4), flag=wx.ALL|wx.EXPAND, border=5)
@@ -34,19 +34,19 @@ class MyFrame(wx.Frame):
         for i in range(3):
             sizer.AddGrowableCol(i)
             sizer.AddGrowableRow(i)
-           
+
         box = wx.BoxSizer(wx.VERTICAL)
         box.Add(sizer, 1, flag=wx.ALL|wx.EXPAND)
-        
-        panel.SetSizer(box)        
+
+        panel.SetSizer(box)
         panel.Layout()
-        #self.Center()        
+        #self.Center()
         self.Show(True)
 
     def OnDelete(self, event):
-        
+
         item = -1
-        
+
         while True:
             item = self.list_ctrl.GetNextItem(item,
                                 wx.LIST_NEXT_ALL,
@@ -54,8 +54,7 @@ class MyFrame(wx.Frame):
             if item == -1:
                 break
 
-            print("Item %ld is selected"%item)
-        #print event
+            print("Item %ld is selected text %s"% (item, self.list_ctrl.GetItem(itemId=item).GetText()) )
 
     def OnRefresh(self, event):
         print event
@@ -65,7 +64,7 @@ class MyFrame(wx.Frame):
             #self.list_ctrl.Append([tag,''])
             self.list_ctrl.InsertStringItem(self.list_ctrl.GetItemCount(), tag)
         self.list_ctrl.SetColumnWidth(0, wx.LIST_AUTOSIZE)
-        
+
 def get_tags():
      cmd = "git"
      parameter1 = '--git-dir'
@@ -76,12 +75,12 @@ def get_tags():
          return string.split(result, '\n')
      except OSError as e:
          print >>sys.stderr, "Execution failed:", e
-        
+
 if __name__ == '__main__':
     tags = get_tags()
-    
+
     app = wx.App(False)
     frame = MyFrame(None, 'Branch Deleter')
     frame.add_tags(tags)
-    
+
     app.MainLoop()
