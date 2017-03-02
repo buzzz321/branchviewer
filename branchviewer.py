@@ -43,18 +43,35 @@ class MyFrame(wx.Frame):
         #self.Center()
         self.Show(True)
 
+
+    def deleteListItems(self, items):
+
+        #print sorted(items) items seems to be sorted..
+        pos = 0
+        for item in items:
+         
+            self.list_ctrl.DeleteItem(item - pos)
+            pos += 1
+
+
     def OnDelete(self, event):
 
         item = -1
 
+        items = []
         while True:
             item = self.list_ctrl.GetNextItem(item,
                                 wx.LIST_NEXT_ALL,
                                 wx.LIST_STATE_SELECTED)
             if item == -1:
                 break
+            items.append(item)
 
             print("Item %ld is selected text %s"% (item, self.list_ctrl.GetItem(itemId=item).GetText()) )
+        print items
+        self.deleteListItems(items)
+        self.list_ctrl.RefreshItems(0, self.list_ctrl.GetItemCount() - 1)
+
 
     def OnRefresh(self, event):
         print event
