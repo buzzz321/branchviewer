@@ -1,0 +1,21 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+MyFrame	C:\Users\Anders\Dropbox\ovn\python\branchviewer\branchviewer.py	/^class MyFrame(wx.Frame):$/;"	kind:class	line:10
+OnDelete	C:\Users\Anders\Dropbox\ovn\python\branchviewer\branchviewer.py	/^    def OnDelete(self, event):$/;"	kind:member	line:57
+OnRefresh	C:\Users\Anders\Dropbox\ovn\python\branchviewer\branchviewer.py	/^    def OnRefresh(self, event):$/;"	kind:member	line:76
+REPO	C:\Users\Anders\Dropbox\ovn\python\branchviewer\branchviewer.py	/^REPO = '\/home\/anders\/slask\/otp\/.git'$/;"	kind:variable	line:8
+__init__	C:\Users\Anders\Dropbox\ovn\python\branchviewer\branchviewer.py	/^    def __init__(self, parent, title):$/;"	kind:member	line:12
+add_tags	C:\Users\Anders\Dropbox\ovn\python\branchviewer\branchviewer.py	/^    def add_tags(self,tags):$/;"	kind:member	line:79
+app	C:\Users\Anders\Dropbox\ovn\python\branchviewer\branchviewer.py	/^    app = wx.App(False)$/;"	kind:variable	line:99
+branchviewer.py	C:\Users\Anders\Dropbox\ovn\python\branchviewer\branchviewer.py	1;"	kind:file	line:1
+deleteListItems	C:\Users\Anders\Dropbox\ovn\python\branchviewer\branchviewer.py	/^    def deleteListItems(self, items):$/;"	kind:member	line:47
+frame	C:\Users\Anders\Dropbox\ovn\python\branchviewer\branchviewer.py	/^    frame = MyFrame(None, 'Branch Deleter')$/;"	kind:variable	line:100
+get_tags	C:\Users\Anders\Dropbox\ovn\python\branchviewer\branchviewer.py	/^def get_tags():$/;"	kind:function	line:85
+string	C:\Users\Anders\Dropbox\ovn\python\branchviewer\branchviewer.py	/^import string$/;"	kind:namespace	line:6
+subprocess	C:\Users\Anders\Dropbox\ovn\python\branchviewer\branchviewer.py	/^import subprocess$/;"	kind:namespace	line:5
+tags	C:\Users\Anders\Dropbox\ovn\python\branchviewer\branchviewer.py	/^    tags = get_tags()$/;"	kind:variable	line:97
+wx	C:\Users\Anders\Dropbox\ovn\python\branchviewer\branchviewer.py	/^import wx$/;"	kind:namespace	line:4
